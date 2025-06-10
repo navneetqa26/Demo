@@ -1,12 +1,11 @@
-import { allureCypress } from "allure-cypress/reporter";
+const { defineConfig } = require("cypress");
+const allureWriter = require("allure-cypress/reporter");
 
-export default {
+module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      allureCypress(on, config, {
-        resultsDir: "allure-results",
-      });
+      allureWriter(on, config);
       return config;
     },
   },
-};
+});
